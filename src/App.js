@@ -1,9 +1,9 @@
 import React from 'react';
 import Animate from "./animate/index.js";
-import NavigationBar from "./animate/navigation-bar/index.js";
-import Profile from "./animate/profile/index.js";
-import Search from "./animate/search/index.js";
-import Login from "./animate/login/index.js";
+import NavigationBar from "./navigation-bar/index.js";
+import Profile from "./profile/index.js";
+import Search from "./search/index.js";
+import Login from "./login/index.js";
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
 
