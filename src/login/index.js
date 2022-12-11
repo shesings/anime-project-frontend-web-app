@@ -38,7 +38,7 @@ const Login = () => {
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
-        <button onClick={onSubmit} class="w-75 btn btn-med btn-primary" type="button">
+        <button onClick={onSubmit} className="w-75 btn btn-med btn-primary" type="button">
           Sign in
         </button>
       </form>

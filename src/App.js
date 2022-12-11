@@ -14,8 +14,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
-        <h1>Hello Animators!</h1>
         <NavigationBar />
+        <h1>Hello Animators!</h1>
         <Routes>
           <Route index element={<Animate />} />
           <Route
