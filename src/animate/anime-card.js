@@ -15,18 +15,17 @@ const AnimeCard = (
     }
 ) => {
         return (
+            <div className="anime-card-container">
             <Link to={`/details/${anime.slug}`} style={{ textDecoration: 'none' }}>
             <span>
-                <div className="col md-5 sm-3">
-                    <div className="card h-100">
-                        <span title="Rating" className={Math.round(anime.averageRating) ?"notify-badge" : "notify-badge grey-m" }>&nbsp;{Math.round(anime.averageRating) ? Math.round(anime.averageRating) : "N/A"}&nbsp;</span>
-                        <img src={image.large} className="card-img-top" alt="" />
-                    </div>
-                    <div className="cardTitle"><strong>{anime.canonicalTitle}</strong></div>
-                    <div>&nbsp;</div>
+                <div>
+                    <span title="Rating" className={Math.round(anime.averageRating) ?"notify-badge" : "notify-badge grey-m" }>&nbsp;{Math.round(anime.averageRating) ? Math.round(anime.averageRating) : "N/A"}&nbsp;</span>
+                    <img src={image.small} className="card-img-top" alt="" />
                 </div>
+                <div><strong>{anime.canonicalTitle}</strong></div>
             </span>
             </Link>
+            </div>
         );
     };
 export default AnimeCard;

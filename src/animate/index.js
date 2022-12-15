@@ -1,16 +1,23 @@
-import React from "react";
-// import { Link } from "react-router-dom";
- import {findTrendingAnime} from "../services/animate-service.js";
+import React, {useEffect} from "react";
 import AnimeGridContainer from "./anime-grid-container.js";
-
+import {useDispatch, useSelector} from "react-redux";
+import {findMostPopularAnime, findTrendingAnimeThunk, findUpcomingAnime} from "../services/animate-thunks.js";
 function Animate() {
+    const {upcomingAnimes, trendingAnimes, popularAnimes, loading} = useSelector(state => state.animesData)
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+            dispatch(findUpcomingAnime())
+            dispatch(findTrendingAnimeThunk())
+            dispatch(findMostPopularAnime())
+    }, [dispatch])
+
+
     return (
         <div>
-            <h1>Explore Animes!</h1>
-            <span>
-                <AnimeGridContainer title="Trending" animeList={findTrendingAnime()}/>
-                {/*<AnimeGridContainer title="Upcoming" animeList={this.props.upcomingAnime}/>*/}
-            </span>
+            <AnimeGridContainer title="Trending recently" animeList={trendingAnimes}/>
+            <AnimeGridContainer title="Popular" animeList={popularAnimes}/>
+            <AnimeGridContainer title="Upcoming" animeList={upcomingAnimes}/>
         </div>
     );
 }

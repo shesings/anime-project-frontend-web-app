@@ -1,25 +1,75 @@
-.notify-badge{
-    position: absolute;
-    right: 80px;
-    top:-13px;
-    background: #FFB10B;
-    text-align: center;
-    border-radius: 30px 30px 30px 30px;
-    color:black;
-    padding:5px 10px;
-    font-size:10px;
+.notify-badge {
+  position: absolute;
+  right: 80px;
+  top: -13px;
+  background: #ffb10b;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color: black;
+  padding: 5px 10px;
+  font-size: 10px;
 }
 
 .cardTitle {
-    font-size: 15px;
-    color: black;
+  font-size: 15px;
+  color: black;
 }
 
 .card {
-    border: none!important;
+  border: none !important;
 }
 
 .grey-m {
-    background: grey;
-    color: white;
+  background: grey;
+  color: white;
 }
+
+.anime-card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: max-content;
+    grid-gap: 1rem;
+}
+
+.anime-card-container {
+    border-radius: 4px;
+    padding: .5rem;
+}
+
+.anime-card-container img {
+    border-radius: 4px;
+}
+
+.anime-card-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.anime-card-title {
+    padding: 0.5rem !important;
+}
+
+/* .anime-card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.anime-card-container {
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  /* padding: .5rem; */
+  /* width: 15%;
+}
+@media (max-width: 1220px) {
+  .anime-card-container {
+    width: 20%;
+  }
+}
+
+@media (max-width: 990px) {
+  .anime-card-container {
+    width: 25%;
+  }
+} */ 

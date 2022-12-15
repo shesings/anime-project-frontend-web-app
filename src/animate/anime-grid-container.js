@@ -1,59 +1,25 @@
-import React, {useEffect}  from "react";
+import React from "react";
 import AnimeCard from "./anime-card.js";
-import {useDispatch, useSelector} from "react-redux";
-import {findMostPopularAnime, findTrendingAnimeThunk, findUpcomingAnime} from "../services/animate-thunks.js";
 
-const AnimeGridContainer = () => {
-        const {upcomingAnimes, trendingAnimes, popularAnimes, loading} = useSelector(state => state.animesData)
-        const dispatch = useDispatch();
-        // console.log(animes);
-        useEffect(() => {
-                dispatch(findUpcomingAnime())
-                dispatch(findTrendingAnimeThunk())
-                dispatch(findMostPopularAnime())
-        }, [dispatch])
+import './index.css';
+
+const AnimeGridContainer = ({animeList, title}) => {
+  
         return (
-            <span>
-                <h2>Trending Anime</h2>
-                <div className="wbdv-grid-row row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
-                            {
-                                 trendingAnimes.map(anime =>
-                                        <AnimeCard
-                                            key={anime.id}
-                                            anime={anime.attributes}
-                                            image={anime.attributes.posterImage}
-                                        />
-                                    )
-                            }
-
-                </div>
-                    <h2>Upcoming Anime</h2>
-                <div className="wbdv-grid-row row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
-                            {
-                                    upcomingAnimes.map(anime =>
-                                        <AnimeCard
-                                            key={anime.id}
-                                            anime={anime.attributes}
-                                            image={anime.attributes.posterImage}
-                                        />
-                                    )
-                            }
-
-                </div>
-                    <h2>Most Popular Anime</h2>
-                <div className="wbdv-grid-row row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
-                            {
-                                    popularAnimes.map(anime =>
-                                        <AnimeCard
-                                            key={anime.id}
-                                            anime={anime.attributes}
-                                            image={anime.attributes.posterImage}
-                                        />
-                                    )
-                            }
-
-                </div>
-            </span>
+          <>
+            <div className="anime-section">
+              <h4 className="anime-card-title">{title}</h4>
+              <div className="anime-card-list">
+                {animeList.map((anime) => (
+                  <AnimeCard
+                    key={anime.id}
+                    anime={anime.attributes}
+                    image={anime.attributes.posterImage}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
         );
 };
 export default AnimeGridContainer;
