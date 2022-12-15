@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {findMostPopularAnime, findTrendingAnimeThunk, findUpcomingAnime} from "../services/animate-thunks.js";
 
 const AnimeGridContainer = () => {
-        const {upcomingAnimes, trendingAnimes, loading} = useSelector(state => {console.log(state); return state.animesData})
+        const {upcomingAnimes, trendingAnimes, loading} = useSelector(state => state.animesData)
         const dispatch = useDispatch();
         // console.log(animes);
         useEffect(() => {
