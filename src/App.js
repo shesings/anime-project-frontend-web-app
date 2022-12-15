@@ -49,6 +49,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/search/:query" element={<Search />} />
           <Route path="/search" element={<Search />} />
           <Route path="/login" element={<Login />} />
           <Route path="/premium" element={<PremiumSignUp />} />
