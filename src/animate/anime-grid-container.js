@@ -4,18 +4,27 @@ import {useDispatch, useSelector} from "react-redux";
 import {findTrendingAnimeThunk} from "../services/animate-thunks.js";
 
 const AnimeGridContainer = () => {
-        // const {animes, loading} = useSelector(state => state.animesData)
+        const {animes, loading} = useSelector(state => state.animesData)
         const dispatch = useDispatch();
+        console.log(animes);
         useEffect(() => {
                 dispatch(findTrendingAnimeThunk())
         }, [])
         return (
             <span>
-                <h2>{this.props.title}</h2>
+                <h2>Trending Anime</h2>
                 <div className="wbdv-grid-row row row-cols-1 row-cols-md-5">
-                    {this.props.animeList.map((trendingAnime) => {
-                        return <AnimeCard animeId={trendingAnime} attr={trendingAnime.attributes} />
-                    })}
+                        <ul className="list-group">
+                            {
+                                    animes.map(anime =>
+                                        <AnimeCard
+                                            key={anime.id}
+                                            anime={anime.attributes}
+                                            image={anime.attributes.posterImage}
+                                        />
+                                    )
+                            }
+                        </ul>
                 </div>
             </span>
         );

@@ -9,15 +9,24 @@ import { Routes, Route } from "react-router";
 import { ProtectedRoute } from "./authentication/ProtectedRoute.js";
 import { UserMovieStatsPage } from "./premium/UserMovieStatsPage.js";
 import { PremiumSignUp } from "./premium/PremiumSignup.js";
+import animateReducer from "./animate/animate-reducer.js";
+import { configureStore } from '@reduxjs/toolkit';
+import {Provider} from "react-redux";
+
+const store = configureStore(
+    {reducer: {
+                animesData: animateReducer
+    }});
 
 function App() {
   return (
+      <Provider store={store}>
     <BrowserRouter>
       <div className="container">
         <NavigationBar />
         <h1>Hello Animators!</h1>
         <Routes>
-          <Route index element={<Animate />} />
+          <Route index element={<Animate/>} />
           <Route
             path="/profile"
             element={
@@ -40,6 +49,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+      </Provider>
   );
 }
 
