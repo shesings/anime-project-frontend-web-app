@@ -7,7 +7,7 @@ import React from "react";
 export function useAuthentication() {
     // do some state or redux store look up later TODO
     return {
-        isLoggedIn: false,
-        isPremiumUser: false
+        isLoggedIn: true,
+        isPremiumUser: true
     };
 }

@@ -9,7 +9,10 @@ import { Routes, Route } from "react-router";
 import { ProtectedRoute } from "./authentication/ProtectedRoute.js";
 import { UserMovieStatsPage } from "./premium/UserMovieStatsPage.js";
 import { PremiumSignUp } from "./premium/PremiumSignup.js";
+
 import animateReducer from "./animate/animate-reducer.js";
+import profileReducer from "./profile/profile-reducer.js";
+
 import { configureStore } from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -21,7 +24,8 @@ import "@fontsource/roboto";
 
 const store = configureStore(
     {reducer: {
-                animesData: animateReducer
+        animesData: animateReducer,
+        profile: profileReducer
     }});
 
 function App() {
@@ -38,6 +42,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile/edit-view"
+            element={
+              <ProtectedRoute>
+                <Profile editMode/>
               </ProtectedRoute>
             }
           />

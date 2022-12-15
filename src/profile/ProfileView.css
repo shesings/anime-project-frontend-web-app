@@ -1,0 +1,62 @@
+.profileViewHeader, .profileEditHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profileEditHeader {
+    justify-content: space-between;
+}
+
+.profileEditLabels {
+    display: flex;
+}
+
+
+.headerWithImage {
+    height: 280px;
+}
+
+.profileImage {
+    align-self: flex-end;
+    border-radius: 50%;
+    width: 100px; 
+    height: 100px;
+    transform: translate(30%, -50%); /* additional 50% of own height */
+    box-shadow: 0 0 0 10px #fff;
+  }
+
+.followCountSection {
+    display: flex;
+    gap: 10px;
+}
+
+.lineDetailSection {
+    display: flex;
+    gap: 20px;
+
+}
+
+.lineDetailSection > p {
+    display: flex;
+    gap: 10px;
+}
+
+.editButton, .saveButton {
+    height: 30px;
+    border: 1px solid lightgrey;
+    border-radius: 30px;
+    background: white;
+    color: black;
+}
+
+.saveButton {
+    background: black;
+    color: white;
+}
+
+.nameTagEdit {
+    display: flex;
+    margin-top: 20px;
+    gap: 350px;
+}
