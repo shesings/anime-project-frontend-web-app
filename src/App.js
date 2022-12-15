@@ -12,6 +12,12 @@ import { PremiumSignUp } from "./premium/PremiumSignup.js";
 import animateReducer from "./animate/animate-reducer.js";
 import { configureStore } from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/jquery/';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+import 'typeface-roboto'
+import "@fontsource/roboto";
 
 const store = configureStore(
     {reducer: {

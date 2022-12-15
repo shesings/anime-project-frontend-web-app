@@ -6,15 +6,14 @@ import {findTrendingAnimeThunk} from "../services/animate-thunks.js";
 const AnimeGridContainer = () => {
         const {animes, loading} = useSelector(state => state.animesData)
         const dispatch = useDispatch();
-        console.log(animes);
+        // console.log(animes);
         useEffect(() => {
                 dispatch(findTrendingAnimeThunk())
         }, [])
         return (
             <span>
                 <h2>Trending Anime</h2>
-                <div className="wbdv-grid-row row row-cols-1 row-cols-md-5">
-                        <ul className="list-group">
+                <div className="wbdv-grid-row row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
                             {
                                     animes.map(anime =>
                                         <AnimeCard
@@ -24,7 +23,7 @@ const AnimeGridContainer = () => {
                                         />
                                     )
                             }
-                        </ul>
+
                 </div>
             </span>
         );

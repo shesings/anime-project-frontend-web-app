@@ -17,7 +17,7 @@ const AnimeCard = (
         return (
             <Link to={`/details/${anime.slug}`} style={{ textDecoration: 'none' }}>
             <span>
-                <div className="col mb-6">
+                <div className="col md-6 sm-3">
                     <div className="card h-100">
                         <span title="Rating" className={Math.round(anime.averageRating) ?"notify-badge" : "notify-badge grey-m" }>&nbsp;{Math.round(anime.averageRating) ? Math.round(anime.averageRating) : "N/A"}&nbsp;</span>
                         <img src={image.large} className="card-img-top" alt="" />
