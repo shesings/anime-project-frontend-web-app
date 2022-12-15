@@ -6,7 +6,7 @@ import AnimeGridContainer from "./anime-grid-container.js";
 function Animate() {
     return (
         <div>
-            <h1>This is index page</h1>
+            <h1>Explore Animes!</h1>
             <span>
                 <AnimeGridContainer title="Trending" animeList={findTrendingAnime()}/>
                 {/*<AnimeGridContainer title="Upcoming" animeList={this.props.upcomingAnime}/>*/}
