@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import {findMostPopularAnime, findTrendingAnimeThunk, findUpcomingAnime} from "../services/animate-thunks.js";
 
 const initialState = {
-    animes: [],
+    upcomingAnimes: [],
+    trendingAnimes: [],
+    popularAnimes: [],
     loading: false
 }
 
@@ -13,44 +15,44 @@ const animesSlice = createSlice({
         [findTrendingAnimeThunk.pending]:
             (state) => {
                 state.loading = true
-                state.animes = []
+                state.trendingAnimes = []
             },
         [findTrendingAnimeThunk.fulfilled]:
             (state, {payload}) => {
                 state.loading = false
-                state.animes = payload
+                state.trendingAnimes = payload
             },
         [findTrendingAnimeThunk.rejected]:
             (state) => {
-                state.animes = false
+                state.trendingAnimes = false
             },
         [findUpcomingAnime.pending]:
             (state) => {
                 state.loading = true
-                state.animes = []
+                state.upcomingAnimes = []
             },
         [findUpcomingAnime.fulfilled]:
             (state, {payload}) => {
                 state.loading = false
-                state.animes = payload
+                state.upcomingAnimes = payload
             },
         [findUpcomingAnime.rejected]:
             (state) => {
-                state.animes = false
+                state.upcomingAnimes = false
             },
         [findMostPopularAnime.pending]:
             (state) => {
                 state.loading = true
-                state.animes = []
+                state.popularAnimes = []
             },
         [findMostPopularAnime.fulfilled]:
             (state, {payload}) => {
                 state.loading = false
-                state.animes = payload
+                state.popularAnimes = payload
             },
         [findMostPopularAnime.rejected]:
             (state) => {
-                state.animes = false
+                state.popularAnimes = false
             }
     },
 });
