@@ -5,3 +5,13 @@ export const findTrendingAnimeThunk = createAsyncThunk(
     'animes/findTrendingAnime', async () =>
         await service.findTrendingAnime()
 )
+
+export const findUpcomingAnime = createAsyncThunk(
+    'animes/findUpcomingAnime', async () =>
+        await service.findUpcomingAnime()
+)
+
+export const findMostPopularAnime = createAsyncThunk(
+    'animes/findMostPopularAnime', async () =>
+        await service.findMostPopularAnime()
+)
