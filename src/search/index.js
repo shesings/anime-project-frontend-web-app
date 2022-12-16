@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import AnimeCard from "../animate/anime-card";
 import { useSearchAnime } from "./useSearchAnime";
+import "./index.css";
 const Search = ({title}) => {
     const {query} = useParams();
     const navigate = useNavigate();
@@ -25,16 +26,18 @@ const Search = ({title}) => {
     }
 
     const renderAnimeCard = ({attributes}) => {
-        return <AnimeCard   anime={attributes} image={attributes.posterImage} />
+        return <AnimeCard anime={attributes} image={attributes.posterImage} />
     }
 
     return (
         <div>
             <h1>{title}</h1>
-            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder='What anime are you looking for ?'/>
-            <button onClick={onSearch}>
-                Search
-            </button>
+            <div className="searchContainer">
+                <input className="searchBar" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder='What anime are you looking for?'/>
+                <button className="searchButton btn btn-success" onClick={onSearch}>
+                    Search
+                </button>
+            </div>
             <div className="wbdv-grid-row row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
                {searchedAnimes && searchedAnimes.map((anime) => renderAnimeCard(anime))}
             </div>

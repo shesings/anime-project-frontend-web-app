@@ -1,0 +1,14 @@
+.searchBar {
+    line-height: 40px;
+    height: 40px;
+    width: 375px;
+    padding-left: 70px;
+}
+
+.searchButton {
+    margin-left: 30px;
+}
+
+.searchContainer {
+    text-align: center;
+}
