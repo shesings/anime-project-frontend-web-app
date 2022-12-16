@@ -21,6 +21,8 @@ const NavigationBar = () => {
   return (
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <div class="container-fluid container">
+        <i className="bi bi-journal-bookmark-fill text-light"></i>
+        &nbsp;&nbsp;
         <a class="navbar-brand" href="#">
           Animate
         </a>

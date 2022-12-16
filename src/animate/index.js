@@ -15,7 +15,7 @@ function Animate() {
 
     return (
         <div>
-            <AnimeGridContainer title="Trending recently" animeList={trendingAnimes}/>
+            <AnimeGridContainer title="Trending Recently" animeList={trendingAnimes}/>
             <AnimeGridContainer title="Popular" animeList={popularAnimes}/>
             <AnimeGridContainer title="Upcoming" animeList={upcomingAnimes}/>
         </div>

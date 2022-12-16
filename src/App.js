@@ -21,6 +21,8 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import 'typeface-roboto'
 import "@fontsource/roboto";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import AnimeDetails from "./animate/anime-details";
 import loginReducer from "./login/login-reducer.js";
 

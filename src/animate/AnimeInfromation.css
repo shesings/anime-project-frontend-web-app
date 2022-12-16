@@ -68,7 +68,7 @@
 }
 
 .fa-heart {
-    color: red;
+    fill: red;
 }
 
 .fa-star {
@@ -85,4 +85,14 @@
 .animeThumbnail {
     width: 195px;
     height: 277px;
+}
+
+.add-watchlist-color {
+    color: #0dcaf0;
+}
+.completed-color {
+    color: #ffc107;
+}
+.favorite-color {
+    color: #dc3545;
 }
