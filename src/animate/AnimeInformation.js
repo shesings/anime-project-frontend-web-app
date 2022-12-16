@@ -22,8 +22,8 @@ const AnimeInformation = (
                 <img src={image} className="card-img" alt=""/>
             </div>
                 <div>
-                    <div className="text-white wbdv-details-card">
-                        <img src={anime.posterImage.large} alt=""/>
+                    <div className="text-white">
+                        <img src={anime.posterImage.small} alt=""/>
                     </div>
                 </div>
                 <div className="animeDetailsContainer">
