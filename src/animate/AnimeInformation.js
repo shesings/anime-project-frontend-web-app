@@ -31,6 +31,8 @@ const AnimeInformation = (
                         <h2>{anime.canonicalTitle}</h2>
                         {anime.averageRating &&
                             <div className="caApprovals">
+                                <i className="bi bi-eyeglasses fs-6 text-success"></i>
+                                &nbsp;
                                 {anime.averageRating}% Community Approvals
                             </div>}
                         {(anime.popularityRank || anime.ratingRank) &&
