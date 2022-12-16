@@ -4,63 +4,48 @@ import { Link } from "react-router-dom";
 import "./ProfileView.css";
 
 const ProfileView = () => {
-  const tuitProfile = useSelector((state) => state.profile);
+  const {user} = useSelector((state) => state.user);
 
   const {
-    profileName = "Sheetal",
-    tweetCount,
-    handle = "@sheetal",
-    bio,
-    followersCount,
-    followingCount,
-    bannerPicture,
-    profilePicture,
-  } = tuitProfile;
+    profilePicture = 'https://i.pinimg.com/236x/2c/67/80/2c678002e587299b3511cec86382daf1.jpg', 	
+    bannerPicture = 'https://wallpapercave.com/wp/wp5788474.jpg',
+    name = "Anon",
+    nick = "Mysterious fox",
+    bio = "This user likes to be mysterious and has a few missing info",
+    dob = "someday, somewhere",
+    location = "LaLa land",
+    joined = "XX/XX",
+  } = user;
 
   return (
     <>
-        <div className={"profileViewHeader"}>
-          <div>
-            <section>
-              <strong>{profileName}</strong>
-            </section>
-            <section>{tweetCount || 0} tweets</section>
-          </div>
-          <br />
-        </div>
         <div className="headerWithImage">
           <img src={bannerPicture} height="230px"/>
           <img className="profileImage" src={profilePicture} />
         </div>
         <div className="profile-details">
-          <NameAndTag profileName={profileName} handle={handle} bio={bio} />
+          <NameAndTag name={name} nick={nick} bio={bio} />
         </div>
         <div className="profile-details">
-          <ProfileLineDetail {...tuitProfile} />
-        </div>
-        <div>
-          <FollowersAndFollowingCount
-            numFollowers={followersCount}
-            numFollowing={followingCount}
-          />
+          <ProfileLineDetail {...user} />
         </div>
     </>
   );
 };
 
-const NameAndTag = ({ profileName, handle, bio }) => {
+const NameAndTag = ({ name, nick, bio }) => {
   return (
     <div>
       <div className="nameTagEdit">
         <div>
           <section>
-            <h4 style={{ margin: 0 }}>{profileName}</h4>
+            <h4 style={{ margin: 0 }}>{name}</h4>
           </section>
-          <section>{handle}</section>
+          <section>{nick}</section>
           <br />
         </div>
         <Link to={"/profile/edit-view"}>
-          <button className="editButton"> Edit Profile</button>
+          <button className="editButton">Edit Profile</button>
         </Link>
       </div>
       <p>{bio}</p>
@@ -68,7 +53,7 @@ const NameAndTag = ({ profileName, handle, bio }) => {
   );
 };
 
-const ProfileLineDetail = ({ location, dateOfBirth, dateJoined }) => {
+const ProfileLineDetail = ({ location, dob, joined }) => {
   return (
     <div className="lineDetailSection">
       <p>
@@ -79,29 +64,14 @@ const ProfileLineDetail = ({ location, dateOfBirth, dateJoined }) => {
       <p>
         {" "}
         <i className="bi bi-balloon"></i>
-        {dateOfBirth}
+        {dob}
       </p>
       <p>
         {" "}
         <i className="bi bi-calendar-heart"></i>
-        {dateJoined}
+        {joined}
       </p>
     </div>
-  );
-};
-
-const FollowersAndFollowingCount = ({ numFollowers, numFollowing }) => {
-  return (
-    <>
-      <div className="followCountSection">
-        <p>
-          <strong>{numFollowing}</strong> Following
-        </p>
-        <p>
-          <strong>{numFollowers}</strong> Followers
-        </p>
-      </div>
-    </>
   );
 };
 

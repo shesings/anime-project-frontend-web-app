@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findUserByIdThunk, loginThunk, signupThunk } from "./login-thunks.js";
+import { findUserByIdThunk, loginThunk, signupThunk, updateUserProfileThunk } from "./login-thunks.js";
 
 const initialState = {
   user: {
     username: "anonUser",
     email: "",
     role: "User",
+    name: "Anon",
+    nick: "Mysterious fox",
+    bio: "This user likes to be mysterious and has a few missing info",
+    dob: "someday, somewhere",
+    location: "LaLa land",
+    joined: "XX/XX",
     personalProfile: {
       favorites: [
         {
@@ -78,6 +84,19 @@ const animesSlice = createSlice({
                 state.user = {...state.user, ...payload};
             },
         [findUserByIdThunk.rejected]:
+            (state) => {
+                state.loading = false
+            },
+        [updateUserProfileThunk.pending]:
+            (state) => {
+                state.loading = true
+            },
+        [updateUserProfileThunk.fulfilled]:
+            (state, {payload}) => {
+                state.loading = false
+                state.user = {...state.user, ...payload};
+            },
+        [updateUserProfileThunk.rejected]:
             (state) => {
                 state.loading = false
             }

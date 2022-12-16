@@ -4,25 +4,26 @@ import { Link } from "react-router-dom";
 import { saveProfile } from "./profile-reducer";
 import "./ProfileView.css";
 import { useNavigate } from 'react-router-dom';
+import { updateUserProfileThunk } from "../login/login-thunks";
 
-// const test = {
-//    firstName: 'Jose', lastName: 'Annunziato', handle: '@jannunzi',
-//    profilePicture: 'jose.png', 	bannerPicture: 'polyglot.png',
-//    bio: 'Faculty, Software Engineer, AI, Space, and renewable enthusiast.
-//          Retuits and likes are not endorsements.',
-//    website: 'youtube.com/webdevtv',
-//    location: 'Boston, MA',	dateOfBirth: '7/7/1968',	dateJoined: '4/2009',
-//    followingCount: 340,	followersCount: 223
-//  }
- 
+
 const ProfileEditView = () => {
-   const tuitProfile = useSelector((state) => state.profile);
-   const {profileName = 'Sheetal', bio, profilePicture, bannerPicture, location, website, dateOfBirth} = tuitProfile;
+   const {user} = useSelector((state) => state.user);
 
-   const [name, setName] = useState(profileName);
+  const {
+    profilePicture = 'https://i.pinimg.com/236x/2c/67/80/2c678002e587299b3511cec86382daf1.jpg', 	bannerPicture = 'https://wallpapercave.com/wp/wp5788474.jpg',
+    name = "Anon",
+    nick = "Mysterious fox",
+    bio = "This user likes to be mysterious and has a few missing info",
+    dob = "someday, somewhere",
+    location = "LaLa land",
+    joined = "XX/XX",
+  } = user;
+ 
+   const [username, setName] = useState(name);
    const [locationInput, setLocation] = useState(location);
-   const [websiteInput, setWebsite] = useState(website);
-   const [dateOfBirthInput, setDateOfBirth] = useState(dateOfBirth);
+   const [websiteInput, setWebsite] = useState(nick);
+   const [dateOfBirthInput, setDateOfBirth] = useState(dob);
 
    const [editBio, setBio] = useState(bio);
 
@@ -30,14 +31,14 @@ const ProfileEditView = () => {
    const navigate = useNavigate();
 
    const submitEditProfile = () => {
-      const tuitProfile = {
-         profileName: name,
+      const currentEdits = {
+         name: name,
          location: locationInput,
-         website: websiteInput,
-         dateOfBirth: dateOfBirthInput,
-         bio: editBio
+         dob: dateOfBirthInput,
+         bio: editBio,
+         nick: websiteInput
       }
-      dispatch(saveProfile(tuitProfile));
+      dispatch(updateUserProfileThunk({uid: user._id, updates: currentEdits}));
 
       navigate('/profile');
    }
@@ -62,7 +63,7 @@ const ProfileEditView = () => {
       </div>
        <br/>
        <div className="form-floating mb-3">
-            <input type="text" className="form-control" onChange={(event) => setName(event.target.value)} id="nameInput" placeholder="Name" value={name} />
+            <input type="text" className="form-control" onChange={(event) => setName(event.target.value)} id="nameInput" placeholder="Name" value={username} />
             <label for="nameInput" className="form-label">Name</label>
          </div> 
          <div className="form-floating mb-3">
@@ -81,7 +82,7 @@ const ProfileEditView = () => {
          
          <div className="form-floating mb-3">
             <input type="text" value={websiteInput} onChange={(event) => setWebsite(event.target.value)} className="form-control" id="websiteInput" placeholder="website" />
-            <label for="websiteInput" className="form-label">Website</label>
+            <label for="websiteInput" className="form-label">Nickname</label>
          </div> 
          
          <div className="form-floating mb-3">

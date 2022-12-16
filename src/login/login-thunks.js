@@ -11,6 +11,11 @@ export const loginThunk = createAsyncThunk(
         await service.loginUser(loginCredentials)
 )
 
+export const updateUserProfileThunk = createAsyncThunk(
+    'auth/updateUserProfileThunk', async ({uid, updates}) =>
+        await service.updateUser(uid, updates)
+)
+
 export const saveFavoriteAnimeThunk = createAsyncThunk(
     'auth/saveFavThunk', async (uid, anime) =>
         await service.saveFavoriteAnime(uid, anime)

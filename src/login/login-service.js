@@ -32,3 +32,8 @@ export const findUserById = async (uid) => {
     console.log({response});
     return response.data;
 }
+
+export const updateUser = async (uid, user) => {
+    const response = await axios.put(`${SERVER_API_BASE}/users/${uid}`, user)
+    return response.data;
+}
