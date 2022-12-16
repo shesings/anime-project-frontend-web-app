@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {findMostPopularAnime, findTrendingAnimeThunk, findUpcomingAnime} from "../services/animate-thunks.js";
+import {findMostPopularAnime, findTrendingAnimeThunk, findUpcomingAnime, getAnimeDetails} from "../services/animate-thunks.js";
 
 const initialState = {
     upcomingAnimes: [],
     trendingAnimes: [],
     popularAnimes: [],
+    animeDetails: [],
     loading: false
 }
 
@@ -53,6 +54,20 @@ const animesSlice = createSlice({
         [findMostPopularAnime.rejected]:
             (state) => {
                 state.popularAnimes = false
+            },
+        [getAnimeDetails.pending]:
+            (state) => {
+                state.loading = true
+                state.animeDetails = []
+            },
+        [getAnimeDetails.fulfilled]:
+            (state, {payload}) => {
+                state.loading = false
+                state.animeDetails = payload
+            },
+        [getAnimeDetails.rejected]:
+            (state) => {
+                state.animeDetails = false
             }
     },
 });

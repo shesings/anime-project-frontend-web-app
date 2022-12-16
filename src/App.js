@@ -21,6 +21,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import 'typeface-roboto'
 import "@fontsource/roboto";
+import AnimeDetails from "./animate/anime-details";
 
 const store = configureStore(
     {reducer: {
@@ -34,10 +35,10 @@ function App() {
     <BrowserRouter>
       <div className="container">
         <NavigationBar />
-        <h1>Hello Animators!</h1>
         <Routes>
           <Route index element={<Animate/>} />
-          <Route
+            <Route path="/details/:query" element={<AnimeDetails/>}/>
+            <Route
             path="/profile"
             element={
               <ProtectedRoute>

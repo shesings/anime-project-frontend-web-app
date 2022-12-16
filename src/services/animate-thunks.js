@@ -15,3 +15,8 @@ export const findMostPopularAnime = createAsyncThunk(
     'animes/findMostPopularAnime', async () =>
         await service.findMostPopularAnime()
 )
+
+export const getAnimeDetails = createAsyncThunk(
+    'animes/getAnimeDetails', async () =>
+        await service.getAnimeDetails()
+)
