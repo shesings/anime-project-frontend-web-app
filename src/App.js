@@ -22,19 +22,21 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import 'typeface-roboto'
 import "@fontsource/roboto";
 import AnimeDetails from "./animate/anime-details";
+import loginReducer from "./login/login-reducer.js";
 
 const store = configureStore(
     {reducer: {
         animesData: animateReducer,
-        profile: profileReducer
+        profile: profileReducer,
+        user: loginReducer
     }});
 
 function App() {
   return (
       <Provider store={store}>
     <BrowserRouter>
+      <NavigationBar />
       <div className="container">
-        <NavigationBar />
         <Routes>
           <Route index element={<Animate/>} />
             <Route path="/details/:query" element={<AnimeDetails/>}/>

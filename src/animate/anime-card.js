@@ -16,27 +16,25 @@ const AnimeCard = (
 ) => {
         return (
             <div className="anime-card-container">
-            {/* <Link to={`/details/${anime.slug}`} style={{ textDecoration: 'none' }}> */}
                 <div>
                     <span title="Rating" className={Math.round(anime.averageRating) ?"notify-badge" : "notify-badge grey-m" }>&nbsp;{Math.round(anime.averageRating) ? Math.round(anime.averageRating) : "N/A"}&nbsp;</span>
                     <img src={image.small} className="card-img-top" alt="" />
                 </div>
-                <div>
+                <div className="anime-card-title">
                     <strong>{anime.canonicalTitle}</strong>
                 </div>
                 <Link to={`/details/${anime.slug}`} style={{ textDecoration: 'none' }}>
                     <div className="poster-overlay">
                         <div className="poster-overlay-btn-wrapper">
                             <button type="button" className="btn btn-info">
-                                <i className="bi bi-list-check"></i>
+                                <i className="bi bi-list-stars"></i>
                             </button>
                             <button type="button" className="btn btn-warning">
                                 <i class="bi bi-bookmark-check"></i>
                             </button>
                             <button type="button" className="btn btn-danger">
-                                <i className="bi bi-person-heart"></i>
+                                <i className="bi bi-heart"></i>
                             </button>
-
                         </div>
                     </div>
                 </Link>
