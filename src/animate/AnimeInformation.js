@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css"
-import {Link} from "react-router-dom";
 
 const AnimeInformation = (
     {
@@ -21,13 +20,14 @@ const AnimeInformation = (
             <div>
                 <img src={image} className="card-img" alt=""/>
             </div>
-                <div>
-                    <div className="text-white">
-                        <img src={anime.posterImage.small} alt=""/>
+            <div className="animeDetailsContainer card">
+                <div className="animeDetails row">
+                    <div className="col-md-4">
+                        <div className="text-white">
+                            <img src={anime.posterImage.small} alt=""/>
+                        </div>
                     </div>
-                </div>
-                <div className="animeDetailsContainer">
-                    <div className="animeDetails">
+                    <div className="col-md-8">
                         <h2>{anime.canonicalTitle}</h2>
                         {/*<div>*/}
                         {/*    <Link to={`/animeId/${this.state.id}/reviews`} style={{textDecoration: 'none'}}>*/}
@@ -60,6 +60,7 @@ const AnimeInformation = (
                         <div><strong>Status:</strong> {anime.status ? anime.status : "N/A"}</div>
                     </div>
                 </div>
+            </div>
             {/*</div>*/}
         </div>
     );
