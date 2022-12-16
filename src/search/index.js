@@ -20,9 +20,13 @@ const Search = ({title}) => {
     }, [searchInput, query]);
 
     const searchAnimeApi = (query) => {
-        searchAnime(query).then((response) => {
-            setSearchedAnimes(response.data.data);
-        });
+        if (typeof query == 'undefined') {
+            return;
+        } else {
+            searchAnime(query).then((response) => {
+                setSearchedAnimes(response.data.data);
+            });
+        }
     }
 
     const renderAnimeCard = ({attributes}) => {
