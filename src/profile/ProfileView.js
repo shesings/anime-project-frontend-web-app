@@ -21,9 +21,6 @@ const ProfileView = () => {
     <>
         <div className={"profileViewHeader"}>
           <div>
-            <i className="bi bi-arrow-left"></i>
-          </div>
-          <div>
             <section>
               <strong>{profileName}</strong>
             </section>
@@ -32,7 +29,7 @@ const ProfileView = () => {
           <br />
         </div>
         <div className="headerWithImage">
-          <img src={bannerPicture} height="230px" />
+          <img src={bannerPicture} height="230px"/>
           <img className="profileImage" src={profilePicture} />
         </div>
         <div className="profile-details">

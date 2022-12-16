@@ -56,6 +56,7 @@ const AnimeInformation = (
                                         <div className="divider"></div>
                             </span>)
                         }
+
                         <div className="synopsis">{anime.synopsis}</div>
                         {anime.ageRating &&
                             <div><strong>Age Rating:</strong> {anime.ageRating ? anime.ageRating : "N/A"}</div>}
