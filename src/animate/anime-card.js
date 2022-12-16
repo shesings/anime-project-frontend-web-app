@@ -26,11 +26,11 @@ const AnimeCard = (
             e.preventDefault();
             console.log(anime);
             if (type === 'favorite') {
-                dispatch(saveFavoriteAnimeThunk(user._id, parseAnimeToTerserObject(anime)));
+                dispatch(saveFavoriteAnimeThunk({uid: user._id,anime: parseAnimeToTerserObject(anime)}));
             } else if (type === 'completed') {
-                dispatch(saveCompletedAnimeThunk(anime));
+                dispatch(saveCompletedAnimeThunk({uid: user._id,anime: parseAnimeToTerserObject(anime)}));
             } else if (type === 'watchlist') {
-                dispatch(saveWatchListAnimeThunk(anime));
+                dispatch(saveWatchListAnimeThunk({uid: user._id,anime: parseAnimeToTerserObject(anime)}));
             }
         };
 
