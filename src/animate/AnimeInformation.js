@@ -29,13 +29,6 @@ const AnimeInformation = (
                     </div>
                     <div className="col-md-8">
                         <h2>{anime.canonicalTitle}</h2>
-                        {/*<div>*/}
-                        {/*    <Link to={`/animeId/${this.state.id}/reviews`} style={{textDecoration: 'none'}}>*/}
-                        {/*        <button className="btn btn-info" data-toggle="modal"*/}
-                        {/*                data-target=".bd-example-modal-lg">Check user reviews!*/}
-                        {/*        </button>*/}
-                        {/*    </Link>*/}
-                        {/*</div>*/}
                         {anime.averageRating &&
                             <div className="caApprovals">
                                 {anime.averageRating}% Community Approvals
@@ -45,14 +38,23 @@ const AnimeInformation = (
                                         <div className="divider"></div>
                                         <div className="popularityWrap">
                                             {anime.popularityRank &&
-                                                <div><i className="fa fa-heart"></i> #{anime.popularityRank} &nbsp;<i
-                                                    className="subtext">(Popularity Rank)</i></div>}
+                                                <div>
+                                                    <span className="favorite-color">
+                                                        <i className="bi bi-heart-fill text-danger"></i>
+                                                    </span>
+                                                    #{anime.popularityRank} &nbsp;
+                                                    <i className="subtext">(Popularity Rank)</i>
+                                                </div>
+                                            }
                                             {anime.ratingRank &&
-                                                <div><i className="fa fa-star"></i>{anime.ratingRank}&nbsp;<i
-                                                    className="subtext">(Ratings Rank)</i></div>}
+                                                <div>
+                                                    <i className="fa fa-star"> </i> {anime.ratingRank} &nbsp;
+                                                    <i className="subtext">(Ratings Rank)</i>
+                                                </div>
+                                            }
                                         </div>
                                         <div className="divider"></div>
-                                    </span>)
+                            </span>)
                         }
                         <div className="synopsis">{anime.synopsis}</div>
                         {anime.ageRating &&
