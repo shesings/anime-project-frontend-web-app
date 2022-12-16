@@ -37,8 +37,9 @@ const AnimeInformation = (
                         {/*    </Link>*/}
                         {/*</div>*/}
                         {anime.averageRating &&
-                            <div className="caApprovals">{anime.averageRating}% Community Approvals {anime.userCount &&
-                                <i className="subtext">( from {anime.userCount} Users )</i>}</div>}
+                            <div className="caApprovals">
+                                {anime.averageRating}% Community Approvals
+                            </div>}
                         {(anime.popularityRank || anime.ratingRank) &&
                             (<span>
                                         <div className="divider"></div>
