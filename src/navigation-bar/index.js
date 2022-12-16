@@ -1,8 +1,23 @@
 import React from "react";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import UserProfileLoad from "./userProfilerLoader";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../login/login-reducer";
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.user);
+  console.log(user);
+
+  const invalidateUserLogin = () => {
+    localStorage.removeItem("currentUser");
+    dispatch(logout);
+    window.location.href = '/';
+  }
+
   return (
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <div class="container-fluid container">
@@ -53,15 +68,55 @@ const NavigationBar = () => {
             <button class="navBtn btn btn-outline-success" type="submit">
               Search
             </button>
-            <button class="navBtn btn btn-outline-warning" type="submit">
-              Signup
-            </button>
-            <button class="navBtn btn btn-outline-primary" type="submit">
-              Login
-            </button>
-        
+            {!user._id && (
+              <>
+                <button
+                  onClick={() => navigate("/signup")}
+                  class="navBtn btn btn-outline-warning"
+                  type="button"
+                >
+                  Signup
+                </button>
+                <button
+                  onClick={() => navigate("/login")}
+                  class="navBtn btn btn-outline-primary"
+                  type="button"
+                >
+                  Login
+                </button>
+              </>
+            )}
+            {user && user._id && (
+              <div class="btn-group">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="true"
+                  aria-expanded="false"
+                >
+                  Shakti
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <li>
+                      <a class="dropdown-item" onClick={() => navigate("/profile")}>
+                        Profile
+                      </a>
+                    </li>
+                  </li>
+                  <li>
+                    <li>
+                      <a class="dropdown-item" onClick={() => invalidateUserLogin()}>
+                        Logout
+                      </a>
+                    </li>
+                  </li>
+                </ul>
+              </div>
+            )}
+            <UserProfileLoad />
           </form>
-          
         </div>
       </div>
     </nav>

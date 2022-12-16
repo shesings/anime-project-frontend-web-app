@@ -4,7 +4,6 @@ import AnimeCard from "./anime-card.js";
 import './index.css';
 
 const AnimeGridContainer = ({animeList, title}) => {
-  
         return (
           <>
             <div className="anime-section">
@@ -13,6 +12,7 @@ const AnimeGridContainer = ({animeList, title}) => {
                 {animeList.map((anime) => (
                   <AnimeCard
                     key={anime.id}
+                    id={anime.id}
                     anime={anime.attributes}
                     image={anime.attributes.posterImage}
                   />

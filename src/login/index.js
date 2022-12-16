@@ -4,20 +4,33 @@ import "./index.css";
 import { loginThunk, signupThunk } from "./login-thunks";
 import { useLogin } from "./useLogin";
 
-const Login = ({ isLogin = false }) => {
+const Login = ({ loginType }) => {
   const { userName, password, setPassword, setUserName } = useLogin();
-  const [login, setLogin] = useState(isLogin);
+  const [login, setLogin] = useState(loginType);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  // }, [userName, password]);
+
+  useEffect(() => {
+      setLogin(loginType);
+  }, [setLogin, loginType])
 
   const onSubmit = () => {
-    const loginCredentials ={
+    const loginCredentials = {
       username: userName,
       password: password,
-      email: userName
-    }
-    if(login) {
+      email: userName,
+      personalProfile: {
+        favorites: [
+          {}
+        ],
+        completed: [
+         {}
+        ],
+        toBeWatched: [
+          {}
+        ],
+      },
+    };
+    if(login == 'login') {
       dispatch(loginThunk(loginCredentials))
     } else {
       dispatch(signupThunk(loginCredentials));
@@ -65,7 +78,7 @@ const Login = ({ isLogin = false }) => {
         </form>
         <div>
           <i>Don't have an account yet?</i>
-          <button className="btn btn-secondary" onClick={() => setLogin(false)}>Create acccount</button>
+          <button className="btn btn-secondary" onClick={() => setLogin('')}>Create acccount</button>
         </div>
       </div>
     );
@@ -113,12 +126,12 @@ const Login = ({ isLogin = false }) => {
         </form>
         <div>
           <i>Already have an account?</i>
-          <button className="btn btn-secondary" onClick={() => setLogin(true)}>Login</button>
+          <button className="btn btn-secondary" onClick={() => setLogin('login')}>Login</button>
         </div>
       </div>
     );
   }
 
-  return <>{login ? renderLogin() : renderSignup()}</>;
+  return <>{login == 'login' ? renderLogin() : renderSignup()}</>;
 };
 export default Login;

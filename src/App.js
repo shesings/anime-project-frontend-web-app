@@ -33,9 +33,10 @@ const store = configureStore(
 
 function App() {
   return (
-      <Provider store={store}>
+    <Provider store={store}>
     <BrowserRouter>
       <NavigationBar />
+      
       <div className="container">
         <Routes>
           <Route index element={<Animate/>} />
@@ -66,7 +67,8 @@ function App() {
           />
           <Route path="/search/:query" element={<Search />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login loginType={'login'}/>} />
+          <Route path="/signUp" element={<Login />} />
           <Route path="/premium" element={<PremiumSignUp />} />
         </Routes>
       </div>

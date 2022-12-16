@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk, signupThunk } from "./login-thunks.js";
+import { findUserByIdThunk, loginThunk, signupThunk } from "./login-thunks.js";
 
 const initialState = {
   user: {
@@ -9,16 +9,10 @@ const initialState = {
     personalProfile: {
       favorites: [
         {
-          animeId: "'222'",
-          animeTitle: "'blue l0ck'",
-          ratingScore: "'99'",
         },
       ],
       completed: [
         {
-          animeId: "'223'",
-          animeTitle: "'blue l1ck'",
-          ratingScore: "'99'",
         },
       ],
       toBeWatched: [
@@ -39,6 +33,11 @@ const initialState = {
 const animesSlice = createSlice({
     name: 'auth',
     initialState,
+    reducers:{
+      logout: (state) => {
+        return {...state, ...{user: {}}}
+    }
+    },
     extraReducers: {
         [signupThunk.pending]:
             (state) => {
@@ -48,7 +47,8 @@ const animesSlice = createSlice({
             (state, {payload}) => {
                 console.log({state, payload})
                 state.loading = false;
-                state.user = {...state.user, ...payload};
+                localStorage.setItem("currentUser", JSON.stringify({...state.user, ...payload, authenticated: true}));
+                state.user = {...state.user, ...payload, authenticated: true};
             },
         [signupThunk.rejected]:
             (state) => {
@@ -60,14 +60,30 @@ const animesSlice = createSlice({
             },
         [loginThunk.fulfilled]:
             (state, {payload}) => {
-                state.loading = false
-                state = payload;
+                state.loading = false;
+                localStorage.setItem("currentUser", JSON.stringify({...state.user, ...payload, authenticated: true}));
+                state.user = {...state.user, ...payload, authenticated: true};
             },
         [loginThunk.rejected]:
+            (state) => {
+                state.loading = false
+            },
+        [findUserByIdThunk.pending]:
+            (state) => {
+                state.loading = true
+            },
+        [findUserByIdThunk.fulfilled]:
+            (state, {payload}) => {
+                state.loading = false
+                state.user = {...state.user, ...payload};
+            },
+        [findUserByIdThunk.rejected]:
             (state) => {
                 state.loading = false
             }
     },
 });
+
+export const {logout} = animesSlice.actions;
 
 export default animesSlice.reducer;
