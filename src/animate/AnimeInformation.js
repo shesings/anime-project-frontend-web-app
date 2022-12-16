@@ -39,16 +39,14 @@ const AnimeInformation = (
                                         <div className="popularityWrap">
                                             {anime.popularityRank &&
                                                 <div>
-                                                    <span className="favorite-color">
-                                                        <i className="bi bi-heart-fill text-danger"></i>
-                                                    </span>
-                                                    #{anime.popularityRank} &nbsp;
+                                                    <i className="bi bi-heart-fill text-danger"></i>
+                                                    &nbsp;#{anime.popularityRank} &nbsp;
                                                     <i className="subtext">(Popularity Rank)</i>
                                                 </div>
                                             }
                                             {anime.ratingRank &&
                                                 <div>
-                                                    <i className="fa fa-star"> </i> {anime.ratingRank} &nbsp;
+                                                    <i className="bi bi-star-fill text-warning"> </i> {anime.ratingRank} &nbsp;
                                                     <i className="subtext">(Ratings Rank)</i>
                                                 </div>
                                             }
