@@ -35,8 +35,8 @@ function App() {
   return (
       <Provider store={store}>
     <BrowserRouter>
+      <NavigationBar />
       <div className="container">
-        <NavigationBar />
         <Routes>
           <Route index element={<Animate/>} />
             <Route path="/details/:query" element={<AnimeDetails/>}/>
