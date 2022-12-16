@@ -27,13 +27,14 @@
 .anime-card-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: max-content;
+    grid-template-rows: auto;
     grid-gap: 1rem;
 }
 
 .anime-card-container {
+    position: relative;
     border-radius: 4px;
-    padding: .5rem;
+    height: fit-content;
 }
 
 .anime-card-container img {
@@ -44,9 +45,40 @@
     text-decoration: none;
     color: black;
 }
+.anime-card-container a:hover {
+    color: black;
+}
 
 .anime-card-title {
     padding: 0.5rem !important;
+}
+
+.poster-overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 3px;
+}
+
+.poster-overlay:hover {
+    opacity: 1;
+    background-image: linear-gradient(to bottom, rgba(76, 85, 138, 0.52), rgba(148, 15, 115, 0.73));
+    background-size: auto 200%;
+}
+
+.poster-overlay-btn-wrapper {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.poster-overlay-btn-wrapper button {
+    width: 30%;
+    margin-right: 3%;
 }
 
 /* .anime-card-list {
